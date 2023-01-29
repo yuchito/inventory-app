@@ -10,6 +10,8 @@ import {Observable} from 'rxjs';
 })
 export class ProductsComponent {
 
+  productOpen;
+  selectedProduct: IProduct;
   products$: Observable<IProduct[]> = this.productsService.products$;
   delete = false;
   productToBeDeleted;
@@ -22,11 +24,27 @@ export class ProductsComponent {
   }
 
   addProduct(): void {
-
+    this.productOpen = true;
+    this.selectedProduct = undefined;
   }
 
   onEdit(product: IProduct): void {
+    this.productOpen = true;
+    this.selectedProduct = product;
+  }
 
+  handleFinish(event): void {
+    if (event && event.product) {
+      if (this.selectedProduct) {
+        // Edit Flow
+        this.productsService.editProduct(this.selectedProduct.id,
+          event.product);
+      } else {
+        // Save New
+        this.productsService.addProduct(event.product);
+      }
+    }
+    this.productOpen = false;
   }
 
   onDelete(product: IProduct): void {

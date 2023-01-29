@@ -34,3 +34,9 @@
   (confirm)="confirmDelete()"
 >
 </app-delete-product-modal>
+
+<app-add-product
+  *ngIf="productOpen"
+  [product]="selectedProduct"
+  (finish)="handleFinish($event)"
+></app-add-product>

@@ -1,7 +1,8 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output, ViewChild} from '@angular/core';
 import {AbstractControl, FormArray, FormBuilder, FormGroup, ValidatorFn, Validators} from '@angular/forms';
 import {ClrWizard} from '@clr/angular';
-import * as _ from 'lodash';
+// import * as _ from 'lodash';
+import pick from 'lodash-es/pick';
 
 @Component({
   selector: 'app-add-product',
@@ -53,12 +54,12 @@ export class AddProductComponent implements OnInit, OnChanges {
     if (this.product) {
       this.productForm.setValue({
         basic: {
-          ..._.pick(this.product, ['name', 'description',
+          ...pick(this.product, ['name', 'description',
             'active']),
           features: this.product.features || [''],
         },
         expiration: {
-          ..._.pick(this.product, ['expirationDate']),
+          ...pick(this.product, ['expirationDate']),
         }
       });
       this.deviceType = this.product.type;

@@ -10,7 +10,7 @@ import {Observable} from 'rxjs';
 })
 export class ProductsComponent {
 
-  productOpen;
+  productOpen: boolean;
   selectedProduct: IProduct;
   products$: Observable<IProduct[]> = this.productsService.products$;
   delete = false;
@@ -29,6 +29,7 @@ export class ProductsComponent {
   }
 
   onEdit(product: IProduct): void {
+    console.warn(product);
     this.productOpen = true;
     this.selectedProduct = product;
   }

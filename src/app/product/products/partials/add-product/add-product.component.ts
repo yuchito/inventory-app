@@ -17,7 +17,10 @@ export class AddProductComponent implements OnInit, OnChanges {
   @Output() finish = new EventEmitter();
   @ViewChild('productWizard', {static: false}) productWizard: ClrWizard;
 
-  deviceType = 'tablet';
+  deviceType = {
+    name: 'Tablet',
+    icon: 'tablet',
+  };
   deviceTypes = [{
     name: 'Tablet',
     icon: 'tablet',
@@ -38,6 +41,7 @@ export class AddProductComponent implements OnInit, OnChanges {
         name: ['', Validators.required],
         description: '',
         active: false,
+        quantity: 0,
         features: fb.array([
           fb.control('')
         ])
@@ -55,7 +59,7 @@ export class AddProductComponent implements OnInit, OnChanges {
       this.productForm.setValue({
         basic: {
           ...pick(this.product, ['name', 'description',
-            'active']),
+            'active', 'quantity']),
           features: this.product.features || [''],
         },
         expiration: {
@@ -89,6 +93,10 @@ export class AddProductComponent implements OnInit, OnChanges {
     return this.productForm.get('basic').invalid;
   }
 
+  get isExpirationInvalid(): boolean {
+    return this.productForm.get('expiration').invalid;
+  }
+
   selectDevice(device): void {
     this.deviceType = device.icon;
   }
@@ -100,7 +108,10 @@ export class AddProductComponent implements OnInit, OnChanges {
 
   close(): void {
     this.productForm.reset();
-    this.deviceType = 'tablet';
+    this.deviceType = {
+      name: 'Tablet',
+      icon: 'tablet',
+    };
     this.productWizard.goTo(this.productWizard.pageCollection.pages.first.id);
     this.productWizard.reset();
   }

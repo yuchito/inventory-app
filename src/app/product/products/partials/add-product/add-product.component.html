@@ -12,7 +12,7 @@
       <div class="clr-row devices">
         <div class="clr-col-md-6" *ngFor="let item of deviceTypes">
           <a href="javascript:void(0)" class="card clickable"
-             (click)="selectDevice(item)" [ngClass]="{'active': item.icon === deviceType}">
+             (click)="selectDevice(item)" [ngClass]="{'active': item.icon === deviceType.icon}">
             <div class="card-block">
               <p class="card-text">
                 {{item.name}}
@@ -38,10 +38,17 @@
                  formControlName="active">
           <label for="active">Active</label>
         </div>
+        <!-- Input for quantity -->
+        <clr-input-container>
+          <label for="quantity">Quantity</label>
+          <input clrInput type="number" id="quantity"
+                 formControlName="quantity">
+        </clr-input-container>
         <!-- Textarea for Product Description -->
         <clr-textarea-container>
           <label for="description">Product Description</label>
-          <textarea clrTextarea id="description" placeholder="Enter description here..." formControlName="description"></textarea>
+          <textarea clrTextarea id="description" placeholder="Enter description here..."
+                    formControlName="description"></textarea>
         </clr-textarea-container>
         <!-- Input FormArray for features -->
         <label class="clr-control-label">Features</label>
@@ -64,7 +71,9 @@
         <clr-control-error>{{expirationError}}</clr-control-error>
       </clr-input-container>
       <ng-template clrPageButtons>
-        <clr-wizard-button [clrWizardButtonDisabled]="isExpirationInvalid" (click)="handleFinish()" [type]="'finish'">Finish</clr-wizard-button>
+        <clr-wizard-button [clrWizardButtonDisabled]="isExpirationInvalid" (click)="handleFinish()" [type]="'finish'">
+          Finish
+        </clr-wizard-button>
       </ng-template>
     </clr-wizard-page>
   </clr-wizard>

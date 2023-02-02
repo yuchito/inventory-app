@@ -9,21 +9,30 @@
       </a>
       <a href="/" class="active nav-link"><span class="nav-text">Products</span></a>
       <a href="/" class="nav-link"><span class="nav-text">Orders</span></a>
+      <a href="/" class="nav-link"><span class="nav-text">Customers</span></a>
       <a href="/" class="nav-link"><span class="nav-text">Shipments</span></a>
       <a href="/" class="nav-link"><span class="nav-text">Suppliers</span></a>
-      <a href="/" class="nav-link"><span class="nav-text">Customers</span></a>
+      <a href="/" class="nav-link"><span class="nav-text">Staff</span></a>
     </div>
     <div class="header-nav">
       <a href="/" class="nav-link"><span class="nav-text">Reports</span></a>
     </div>
     <div class="header-actions">
       <clr-dropdown>
-        <button class="nav-icon" clrDropdownTrigger aria-label="toggle settings menu">
-          <clr-icon shape="settings"></clr-icon>
-        </button>
+          <div id="nav-bar"
+               class="avatar-container">
+            <button clrDropdownTrigger aria-label="toggle settings menu"
+                    class="avatar-picture"
+                    style="color: rgb(255, 177, 27); background-color: rgb(255, 239, 209);">
+              <div class="resize-picture">
+                <img src="https://res.cloudinary.com/glide/image/fetch/t_media_lib_thumb/https%3A%2F%2Fstorage.googleapis.com%2Fglide-prod.appspot.com%2Fuploads-v2%2FXV3w1ASFkyxX6yqGLBUy%2Fpub%2FoTfoYHzMzimarq7DFZX0.png"
+                     class="img-fit"
+                     style="display: block; background-color: transparent;">
+              </div>
+            </button>
+          </div>
         <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
-          <a href="/" clrDropdownItem>About</a>
-          <a href="/" clrDropdownItem>Preferences</a>
+          <a href="/" clrDropdownItem>View Profile</a>
           <a href="/" clrDropdownItem>Log out</a>
         </clr-dropdown-menu>
       </clr-dropdown>

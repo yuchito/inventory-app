@@ -15,6 +15,7 @@ export class ProductsComponent {
   products$: Observable<IProduct[]> = this.productsService.products$;
   delete = false;
   productToBeDeleted;
+  isGridView = true;
 
   constructor(private productsService: ProductsService) {
   }

@@ -1,13 +1,13 @@
 <button class="btn btn-outline btn-sm" (click)="addProduct()">Add Product</button>
 <div class="btn-group">
-  <button class="btn btn-icon btn-primary">
+  <button class="btn btn-icon" [ngClass]="isGridView ? 'btn-link' : 'btn-primary'" (click)="isGridView = !isGridView">
     <clr-icon shape="table"></clr-icon>
   </button>
-  <button class="btn btn-icon btn-link">
+  <button class="btn btn-icon" [ngClass]="isGridView ? 'btn-primary' : 'btn-link'" (click)="isGridView = !isGridView">
     <clr-icon shape="grid-view"></clr-icon>
   </button>
 </div>
-<clr-datagrid>
+<clr-datagrid *ngIf="!isGridView; else gridView">
   <clr-dg-column clrDgField="name">Name</clr-dg-column>
   <clr-dg-column>Type</clr-dg-column>
   <clr-dg-column>Quantity</clr-dg-column>
@@ -18,7 +18,12 @@
       <button class="action-item" (click)="onEdit(product)">Edit</button>
       <button class="action-item" (click)="onDelete(product)">Delete</button>
     </clr-dg-action-overflow>
-    <clr-dg-cell>{{product.name}}</clr-dg-cell>
+    <clr-dg-cell>
+      <img
+        class=""
+        src="https://clarity.design/assets/images/documentation/cards/placeholder_60x60.png" alt="no-image">
+      {{product.name}}
+    </clr-dg-cell>
     <clr-dg-cell>
       <clr-icon [attr.shape]="product.type.icon"></clr-icon>
       {{product.type.name}}
@@ -45,6 +50,27 @@
     </clr-dg-pagination>
   </clr-dg-footer>
 </clr-datagrid>
+<ng-template #gridView>
+  <div class="clr-row">
+    <div class="clr-col-lg-3 clr-col-12" *ngFor="let product of products$ | async; trackBy trackById">
+      <a href="/" class="card clickable">
+        <div class="card-img">
+          <img
+            src="https://clarity.design/assets/images/documentation/cards/placeholder_60x60.png" alt="no-image">
+        </div>
+        <div class="card-block">
+          <p class="card-title" style="color: #00648f;">
+            {{product.type.name}}
+          </p>
+          <p class="card-text">
+            {{product.name}}
+          </p>
+        </div>
+      </a>
+    </div>
+  </div>
+</ng-template>
+
 <app-delete-product-modal
   *ngIf="delete"
   [product]="productToBeDeleted"
@@ -58,22 +84,3 @@
   [product]="selectedProduct"
   (finish)="handleFinish($event)"
 ></app-add-product>
-
-<div class="clr-row">
-  <div class="clr-col-lg-3 clr-col-12" *ngFor="let product of products$ | async; trackBy trackById">
-    <a href="/" class="card clickable">
-      <div class="card-img">
-        <img
-          src="https://clarity.design/assets/images/documentation/cards/placeholder_60x60.png" alt="no-image">
-      </div>
-      <div class="card-block">
-        <p class="card-title" style="color: #00648f;">
-          {{product.type.name}}
-        </p>
-        <p class="card-text">
-          {{product.name}}
-        </p>
-      </div>
-    </a>
-  </div>
-</div>

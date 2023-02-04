@@ -1,3 +1,4 @@
+<!--
 <form [formGroup]="productForm">
   <clr-wizard #productWizard [clrWizardOpen]="true" clrWizardSize="lg" (clrWizardOnCancel)="handleClose()">
 
@@ -26,31 +27,31 @@
     <clr-wizard-page>
       <ng-template clrPageTitle>Basic Info</ng-template>
       <div formGroupName="basic">
-        <!-- Input field for Product Name -->
+        &lt;!&ndash; Input field for Product Name &ndash;&gt;
         <clr-input-container>
           <label for="product-name">Product Name *</label>
           <input clrInput type="text" id="product-name" placeholder="IPhone X..." formControlName="name">
           <clr-control-error>This Field is Required!</clr-control-error>
         </clr-input-container>
-        <!-- Toggle Switch for active -->
+        &lt;!&ndash; Toggle Switch for active &ndash;&gt;
         <div class="toggle-switch">
           <input type="checkbox" id="active"
                  formControlName="active">
           <label for="active">Active</label>
         </div>
-        <!-- Input for quantity -->
+        &lt;!&ndash; Input for quantity &ndash;&gt;
         <clr-input-container>
           <label for="quantity">Quantity</label>
           <input clrInput type="number" id="quantity"
                  formControlName="quantity">
         </clr-input-container>
-        <!-- Textarea for Product Description -->
+        &lt;!&ndash; Textarea for Product Description &ndash;&gt;
         <clr-textarea-container>
           <label for="description">Product Description</label>
           <textarea clrTextarea id="description" placeholder="Enter description here..."
                     formControlName="description"></textarea>
         </clr-textarea-container>
-        <!-- Input FormArray for features -->
+        &lt;!&ndash; Input FormArray for features &ndash;&gt;
         <label class="clr-control-label">Features</label>
         <clr-input-container formArrayName="features" *ngFor="let control of basicFeatures.controls">
           <input clrInput type="text" [formControl]="control" placeholder="IPhone X...">
@@ -78,3 +79,4 @@
     </clr-wizard-page>
   </clr-wizard>
 </form>
+-->

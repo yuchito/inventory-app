@@ -1,11 +1,14 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {IProduct, ProductsService} from '../services/products.service';
+import {IProduct, ProductsService} from './services/products.service';
 import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css'],
+  template: `
+    <app-one-column-layout>
+      <!-- menu side bar-->
+    </app-one-column-layout>
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductsComponent {

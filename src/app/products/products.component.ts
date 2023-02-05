@@ -5,9 +5,10 @@ import {Observable} from 'rxjs';
 @Component({
   selector: 'app-products',
   template: `
-    <app-one-column-layout>
-      <!-- menu side bar-->
-    </app-one-column-layout>
+      <app-one-column-layout>
+        <!-- menu side bar-->
+        <router-outlet></router-outlet>
+      </app-one-column-layout>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })

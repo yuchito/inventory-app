@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { OneColumnLayoutComponent } from './layouts';
 import {ClarityModule} from '@clr/angular';
 import { HeaderComponent } from './components/header/header.component';
+import { SideBarComponent } from './components/side-bar/side-bar.component';
 
 
 
@@ -15,6 +16,6 @@ import { HeaderComponent } from './components/header/header.component';
     CommonModule,
     ClarityModule
   ],
-  declarations: [OneColumnLayoutComponent, HeaderComponent],
+  declarations: [OneColumnLayoutComponent, HeaderComponent, SideBarComponent],
 })
 export class ThemesModule { }

@@ -4,6 +4,7 @@ import { OneColumnLayoutComponent } from './layouts';
 import {ClarityModule} from '@clr/angular';
 import { HeaderComponent } from './components/header/header.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
+import {FormsModule} from '@angular/forms';
 
 
 
@@ -14,7 +15,8 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
   ],
   imports: [
     CommonModule,
-    ClarityModule
+    ClarityModule,
+    FormsModule
   ],
   declarations: [OneColumnLayoutComponent, HeaderComponent, SideBarComponent],
 })

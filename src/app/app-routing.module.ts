@@ -3,12 +3,12 @@ import {NgModule} from '@angular/core';
 
 const routes: Routes = [
   {
-    path: 'inventory',
+    path: 'products',
     loadChildren: () => import('./products/products.module')
       .then(m => m.ProductsModule),
   },
-  {path: '', redirectTo: 'inventory', pathMatch: 'full'},
-  {path: '**', redirectTo: 'inventory'},
+  {path: '', redirectTo: 'products', pathMatch: 'full'},
+  {path: '**', redirectTo: 'products'},
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

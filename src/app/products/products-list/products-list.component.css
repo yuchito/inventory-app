@@ -1,3 +1,15 @@
 clr-dg-cell {
   align-self: center;
 }
+
+.card-img {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0px, auto);
+}
+
+clr-dropdown {
+  position: absolute !important;
+  top: 0;
+  right: 0;
+}

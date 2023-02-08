@@ -1,7 +1,10 @@
 <!--ngx-barcode [bc-value]="'t'" bc-format="CODE39"></ngx-barcode-->
-<div class="clr-row clr-justify-content-between">
-  <button class="btn btn-outline btn-sm" style="margin-left: 15px;" (click)="addProduct()">Add Product</button>
-  <div style="margin-right: 10px;">
+<div class="clr-row clr-justify-content-between" style="align-items: baseline;">
+  <div style="margin-left: 15px;">
+    <h1 class="page-header">Products</h1>
+  </div>
+  <div style="margin-right: 10px;margin-left: 15px;">
+    <button class="btn btn-outline btn-sm" (click)="addProduct()">Add Product</button>
     <span style="align-self: center; padding-right: 12px;">View :</span>
     <button class="btn btn-icon" [ngClass]="isGridView ? 'btn-link' : 'btn-primary'" (click)="isGridView = !isGridView">
       <clr-icon shape="table"></clr-icon>
@@ -18,9 +21,8 @@
     <clr-dg-column>Quantity</clr-dg-column>
     <clr-dg-column>Expiration Date</clr-dg-column>
     <clr-dg-column>Active</clr-dg-column>
-    <clr-dg-column style="width: 5px !important;"></clr-dg-column>
     <clr-dg-row *clrDgItems="let product of products$ | async; trackBy trackById" [clrDgItem]="product">
-      <clr-dg-cell>
+      <clr-dg-cell style="width: 40%; !important;">
         <img
           src="https://clarity.design/assets/images/documentation/cards/placeholder_60x60.png" alt="no-image">
         {{product.name}}
@@ -40,13 +42,10 @@
           {{product.active ? 'Active' : 'Inactive'}}
         </span>
       </clr-dg-cell>
-      <clr-dg-cell style="width: 5px !important;">
-        <clr-icon shape="ellipsis-horizontal"></clr-icon>
-        <!--clr-dg-action-overflow>
-          <button class="action-item" (click)="onEdit(product)">Edit</button>
-          <button class="action-item" (click)="onDelete(product)">Delete</button>
-        </clr-dg-action-overflow-->
-      </clr-dg-cell>
+      <clr-dg-action-overflow>
+        <button class="action-item" (click)="onEdit(product)">Edit</button>
+        <button class="action-item" (click)="onDelete(product)">Delete</button>
+      </clr-dg-action-overflow>
     </clr-dg-row>
     <clr-dg-footer>
       <clr-dg-pagination #pagination [clrDgPageSize]="10">
@@ -62,13 +61,19 @@
 <ng-template #gridView>
   <div class="clr-row">
     <div class="clr-col-lg-3 clr-col-12" *ngFor="let product of products$ | async; trackBy trackById">
-      <div (click)="onDelete(product)" class="card clickable">
+      <div class="card clickable" (click)="onEdit(product)">
         <div class="card-img">
-          <img
-            src="https://clarity.design/assets/images/documentation/cards/placeholder_60x60.png" alt="no-image">
-          <clr-icon shape="ellipsis-horizontal" (click)="onEdit(product); $event.stopPropagation()" class="clr-icon-lg"
-                    style="position: absolute; top: 10px; right: 10px;    width: 16px;
-    height: 16px;"></clr-icon>
+          <img src="https://clarity.design/assets/images/documentation/cards/placeholder_60x60.png" alt="no-image">
+          <clr-dropdown (click)="$event.stopPropagation()" [clrCloseMenuOnItemClick]="false">
+            <button clrDropdownTrigger style="padding: 9px !important; margin-left: 4px !important;">
+              <clr-icon shape="ellipsis-horizontal"></clr-icon>
+            </button>
+            <clr-dropdown-menu *clrIfOpen clrPosition="left-bottom" style="padding: 3px 2px;
+!important;">
+              <div class="dropdown-item" (click)="onEdit(product);">Edit
+              </div>
+            </clr-dropdown-menu>
+          </clr-dropdown>
         </div>
         <div class="card-block">
           <p class="card-title" style="color: #00648f;">

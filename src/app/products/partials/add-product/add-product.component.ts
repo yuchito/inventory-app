@@ -98,7 +98,7 @@ export class AddProductComponent implements OnInit, OnChanges {
   }
 
   selectDevice(device): void {
-    this.deviceType = device.icon;
+    this.deviceType = device;
   }
 
   handleClose(): void {
